@@ -1,0 +1,45 @@
+apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 27
+    buildToolsVersion '29.0.2'
+
+    defaultConfig {
+        minSdkVersion 23
+        versionCode 1
+        versionName "0.3.3"
+        consumerProguardFiles 'proguard.txt'
+    }
+    android {
+        lintOptions {
+            abortOnError false
+        }
+    }
+}
+
+publish {
+    groupId = 'com.github.stfalcon'
+    artifactId = 'chatkit'
+    publishVersion = '0.3.3'
+    desc = 'ChatKit - is a library designed to simplify the development of UI for such a trivial task as chat. It have flexible possibilities for styling, customizing and data management'
+    licences = ['Apache-2.0']
+    uploadName = 'ChatKit'
+    website = 'https://github.com/stfalcon-studio/ChatKit.git'
+}
+
+ext {
+    supportVersion = '27.1.1'
+    flexboxVersion = '1.0.0'
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation "com.android.support:appcompat-v7:$supportVersion"
+    implementation "com.android.support:design:$supportVersion"
+    implementation "com.google.android:flexbox:$flexboxVersion"
+
+   // implementation files('/sample/libs/empalink-2.2.aar')
+    implementation 'com.squareup.okhttp:okhttp:2.7.5'
+}
